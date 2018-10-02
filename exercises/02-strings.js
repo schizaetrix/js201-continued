@@ -91,16 +91,48 @@ function capitalizeAll (sentence) {
 // split('APPLExxBANANAxxCHERRY', 'xx') --> ['APPLE', 'BANANA', 'CHERRY']
 // split('xyz', 'r') --> ['xyz']
 
-function split (string, delimiter) {
-    var splitArray = [''];
-    var j = 0;
-    for (var i = 0; i < string.length; i++) {
-        if (string.charAt(i) === delimiter) {
-          splitArray.push('');
-          j++;
-        } else {
-            splitArray[j] = splitArray[j] + string.charAt(i);
-        }
+
+// My previous solution for function split() is below:
+// -------------------------------------------------------------
+// function split (string, delimiter) {
+//     var splitArray = [""];
+//     var j = 0;
+
+//     for (var i = 0; i < string.length; i++) {
+//         if (string[i] === delimiter) {
+//           splitArray.push("");
+//           j++;
+//         } else {
+//             splitArray[j] = splitArray[j] + string.charAt(i);
+//         }
+//     }
+//     return splitArray;
+// }
+
+function split (str, delimiter) {
+    const delimiterLength = delimiter.length
+    let resultArray = []
+  
+    // find the first instance of delimiter in the string
+    let delimiterIdx = str.indexOf(delimiter)
+  
+    // continue searching as long as there is an instance of delimiter in str
+    while (delimiterIdx !== -1) {
+      // cut off the first part of the string up until delimiter and push it onto
+      // the result array
+      const chunk = str.substring(0, delimiterIdx)
+      resultArray.push(chunk)
+  
+      // remove the chunk and the delimiter from the beginning of the string
+      str = str.substring(chunk.length)
+      str = str.substring(delimiterLength)
+  
+      // search the string for the next instance of delimiter
+      delimiterIdx = str.indexOf(delimiter)
     }
-    return splitArray;
-}
+  
+    // push any remaining str onto the result array
+    resultArray.push(str)
+  
+    return resultArray
+  }

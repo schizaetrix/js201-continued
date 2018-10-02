@@ -11,5 +11,20 @@
 // fizzbuzz(15) --> '..fizz.buzzfizz..fizzbuzz.fizz..fizzbuzz'
 
 function fizzbuzz (num) {
+    var holdNum = 1;
+    var fzbzString = "";
 
+    while (holdNum <= num) {
+        if (holdNum % 3 != 0 && holdNum % 5 != 0) {
+            fzbzString = fzbzString + ".";
+        } if (holdNum % 3 === 0 && holdNum % 5 != 0) {
+            fzbzString = fzbzString + "fizz";
+        } if (holdNum % 3 != 0 && holdNum % 5 === 0) {
+            fzbzString = fzbzString + "buzz";
+        } if (holdNum % 3 === 0 && holdNum % 5 === 0) {
+            fzbzString = fzbzString + "fizzbuzz";
+        }
+        holdNum++;
+    }
+    return fzbzString;
 }
