@@ -110,7 +110,6 @@ function capitalizeAll (sentence) {
 // }
 
 function split (str, delimiter) {
-    const delimiterLength = delimiter.length
     let resultArray = []
   
     // find the first instance of delimiter in the string
@@ -125,7 +124,7 @@ function split (str, delimiter) {
   
       // remove the chunk and the delimiter from the beginning of the string
       str = str.substring(chunk.length)
-      str = str.substring(delimiterLength)
+      str = str.substring(delimiter.length)
   
       // search the string for the next instance of delimiter
       delimiterIdx = str.indexOf(delimiter)
